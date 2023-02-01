@@ -1,4 +1,4 @@
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\itembox_random_add.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\itembox_random_add.ino"
  ;/**
 
  * @file Done_ItemBox_code.ino
@@ -18,8 +18,8 @@
  *
 
  */
-# 12 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\itembox_random_add.ino"
-# 13 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\itembox_random_add.ino" 2
+# 12 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\itembox_random_add.ino"
+# 13 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\itembox_random_add.ino" 2
 
 void setup()
 {
@@ -41,13 +41,13 @@ void loop()
     GameTimer.run();
     BlinkTimer.run();
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\Game_system.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Game_system.ino"
 /**
 
  * @brief 현재 풀고있는 문제에서 엔코더 값의 변화에 따라 네오픽셀 진동모터 정답카운팅을 관장하는 함수
 
  */
-# 4 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\Game_system.ino"
+# 4 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Game_system.ino"
 void Puzzle(void)
 {
     int currentAnswer = modeValue[ANSWER][answerCnt]; // Puzzle 함수를 진행하는 동안 현재의 정답 저장용 변수, 몇번째 문제인지 저장하는건 answerCnt 전연 변수
@@ -88,7 +88,7 @@ void Puzzle(void)
         encoderValue = currentEncoderValue; // 네오픽셀 점멸 시 마지막으로 저장된 엔코더 값 저장해서 현재 엔코더 값이 바뀌어도 되돌아가게 하는 변수 저장
     }
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\Wifi.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Wifi.ino"
 void DataChanged()
 {
   static StaticJsonDocument<500> cur; //저장되어 있는 cur과 읽어온 my 값과 비교후 실행
@@ -144,11 +144,15 @@ void DataChanged()
             BoxClose();
         }
         else if((String)(const char*)my["device_state"] == "player_win"){
+            ptrCurrentMode = WaitFunc;
+            ptrRfidMode = WaitFunc;
             AllNeoOn(BLUE);
             BoxOpen();
             sendCommand("page pgPlayerWin");
         }
         else if((String)(const char*)my["device_state"] == "player_lose"){
+            ptrCurrentMode = WaitFunc;
+            ptrRfidMode = WaitFunc;
             AllNeoOn(RED);
             BoxOpen();
             sendCommand("page pgPlayerLose");
@@ -226,7 +230,7 @@ void ReadyFunc(void)
     GameTimer.deleteTimer(gameTimerId);
     ledcWrite(VibrationLedChannel, 0);
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\encoder.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\encoder.ino"
 void EncoderInit()
 {
     Serial.println("ENCODER INIT"); //엔코더 핀 관련 초기화
@@ -256,7 +260,7 @@ long readEncoderValue(void) //엔코더읽은 값 / 4 해주는 함수: 한틱 �
 {
     return encoderValue / 4;
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\motor.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\motor.ino"
 void MotorInit()
 {
     //Linear Motor Init
@@ -315,7 +319,7 @@ void EncoderVibrationStrength(int answer)
     else vibeStrength = 4;
     ledcWrite(VibrationLedChannel, modeValue[VIBESTREGNTH][vibeStrength]);
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\neopixel.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\neopixel.ino"
 void NeopixelInit() // 전체 네오픽셀 초기화 해주는 함수                    
 {
   for (int i = 0; i < NeopixelNum; ++i)
@@ -333,7 +337,7 @@ void NeopixelInit() // 전체 네오픽셀 초기화 해주는 함수
  * @brief 현재 엔코더 값을 네오픽셀의 빨간색으로 표시하는 함수
 
  */
-# 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\neopixel.ino"
+# 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\neopixel.ino"
 void EncoderNeopixelOn()
 {
     int neoColor = readEncoderValue() / 24; // 0~23, 24~4 ... 24마다 네오픽셀의 밝기가 증가함을 저장하는 변수
@@ -357,7 +361,7 @@ void AllNeoOn(int neoColor){
   for (int i = 0; i < NeopixelNum; ++i)
     pixels[i].lightColor(color[neoColor]);
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\nextion.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\nextion.ino"
 void NextionInit()
 {
    nexInit();
@@ -426,13 +430,13 @@ void BatteryPackSend(){
         sendCommand("pgItemOpen.vBatteryPack.val=5");
     }
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\rfid.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
 /**
 
  * @brief 내부 외부 pn532 초기활성화 및 실패시  goto문 반복
 
  */
-# 4 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\rfid.ino"
+# 4 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
 void RfidInit()
 {
 RestartPn532: // goto문 회귀 위치
@@ -461,7 +465,7 @@ RestartPn532: // goto문 회귀 위치
  * @brief 아이템박스 내부 pn532 태그 읽어와서 CheckingPlayer로 전송
 
  */
-# 30 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\rfid.ino"
+# 30 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
 void RfidLoopInner()
 {
   uint8_t uid[3][7] = {{0, 0, 0, 0, 0, 0, 0},
@@ -492,7 +496,7 @@ void RfidLoopInner()
  * @brief 아이템박스 외부 pn532 태그 읽어와서 CheckingPlayer로 전송
 
  */
-# 58 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\rfid.ino"
+# 58 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
 void RfidLoopOutter()
 {
   uint8_t uid[3][7] = {{0, 0, 0, 0, 0, 0, 0},
@@ -524,7 +528,7 @@ void RfidLoopOutter()
  * @brief 내외부에서 태그한 카드데이터 string으로 변환후 DB에 요청하여 'role'확인하여 ptrRfidMode로 전송
 
  */
-# 87 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\rfid.ino"
+# 87 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
 void CheckingPlayers(uint8_t rfidData[32]) // 어떤 카드가 들어왔는지 확인용
 {
   String tagUser = ""; // 읽어온 uint_8t값 string으로 변환하기 위한 String 변수
@@ -555,7 +559,7 @@ void CheckingPlayers(uint8_t rfidData[32]) // 어떤 카드가 들어왔는지 �
  * @brief Activate 상황에서 외부 pn532 태그시 엔코더 활성화 후 RFID 중지 Puzzle함수 실행
 
  */
-# 115 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\rfid.ino"
+# 115 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
 void StartPuzzle()
 {
   Serial.println("StartPuzzle");
@@ -574,7 +578,7 @@ void StartPuzzle()
  * @brief Puzzle함수로 문제를 다 맞춘 후 완료하는 태그를 실행했을때 실행되는 함수
 
  */
-# 131 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\rfid.ino"
+# 131 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
 void PuzzleSolved()
 {
   itemBoxSelfOpen = true; // 태그하면 아이템박스가 open 상태 임으로 메인에서 open 명령 들어와도 재실행되지 않게 제한하는 bool 변수
@@ -599,7 +603,7 @@ void PuzzleSolved()
  * @brief PuzzleSolved 함수 실행후 내부 RIFD태그 되어있을때 실행되는 함수 (배터리팩이랑 경험치 가져오는 버그)
 
  */
-# 153 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\rfid.ino"
+# 153 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
 void ItemTook()
 {
   /* #region  배터리팩 개수 Serial로 확인하는 부분 */
@@ -629,7 +633,7 @@ void ItemTook()
     BlinkTimerStart(INNER, YELLOW); // 내부 네오픽셀 황색 점멸 타이머 시작
   }
 }
-# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\Final_Code\\itembox_random_add\\timer.ino"
+# 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\timer.ino"
 void TimerInit()
 {
     wifiTimerId = WifiTimer.setInterval(wifiTime,WifiIntervalFunc);

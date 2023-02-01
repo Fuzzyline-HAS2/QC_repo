@@ -53,11 +53,15 @@ void DataChanged()
             BoxClose();
         }
         else if((String)(const char*)my["device_state"] == "player_win"){ 
+            ptrCurrentMode = WaitFunc;
+            ptrRfidMode = WaitFunc;
             AllNeoOn(BLUE);
             BoxOpen();
             sendCommand("page pgPlayerWin");
         }
         else if((String)(const char*)my["device_state"] == "player_lose"){ 
+            ptrCurrentMode = WaitFunc;
+            ptrRfidMode = WaitFunc;
             AllNeoOn(RED);
             BoxOpen();
             sendCommand("page pgPlayerLose");
