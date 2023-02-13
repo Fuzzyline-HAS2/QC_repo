@@ -14,13 +14,14 @@
 void setup() 
 {
     Serial.begin(115200);
+    has2wifi.Setup("badland");
     NeopixelInit();
     RfidInit();
     MotorInit();
     EncoderInit();
     NextionInit();
     TimerInit();
-    has2wifi.Setup();
+    // has2wifi.Setup();
     // has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
     DataChanged();
 }

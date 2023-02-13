@@ -3,5 +3,5 @@
     "sketch": "itembox_random_add.ino",
     "configuration": "PartitionScheme=default,CPUFreq=240,FlashMode=qio,FlashFreq=80,FlashSize=4M,UploadSpeed=921600,DebugLevel=none,EraseFlash=none",
     "board": "esp32:esp32:ttgo-t1",
-    "port": "COM48"
+    "port": "COM17"
 }

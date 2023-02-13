@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\itembox_random_add.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\itembox_random_add.ino"
  ;/**
  * @file Done_ItemBox_code.ino
  * @author 김병준 (you@domain.com)
@@ -13,91 +13,92 @@
 
 #include "itembox_random_add.h"
 
-#line 14 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\itembox_random_add.ino"
+#line 14 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\itembox_random_add.ino"
 void setup();
-#line 27 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\itembox_random_add.ino"
+#line 28 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\itembox_random_add.ino"
 void loop();
-#line 4 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Game_system.ino"
+#line 4 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\Game_system.ino"
 void Puzzle(void);
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Wifi.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\Wifi.ino"
 void DataChanged();
-#line 73 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Wifi.ino"
+#line 80 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\Wifi.ino"
 void WaitFunc(void);
-#line 77 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Wifi.ino"
+#line 84 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\Wifi.ino"
 void SettingFunc(void);
-#line 93 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Wifi.ino"
+#line 100 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\Wifi.ino"
 void ActivateFunc(void);
-#line 109 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Wifi.ino"
+#line 116 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\Wifi.ino"
 void ReadyFunc(void);
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\encoder.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\encoder.ino"
 void EncoderInit();
-#line 9 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\encoder.ino"
+#line 9 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\encoder.ino"
 void updateEncoder();
-#line 26 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\encoder.ino"
+#line 26 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\encoder.ino"
 long readEncoderValue(void);
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\motor.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\motor.ino"
 void MotorInit();
-#line 19 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\motor.ino"
+#line 19 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\motor.ino"
 void BoxClose();
-#line 29 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\motor.ino"
+#line 29 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\motor.ino"
 void BoxOpen();
-#line 39 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\motor.ino"
+#line 39 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\motor.ino"
 void MotorStop();
-#line 46 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\motor.ino"
+#line 46 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\motor.ino"
 void EncoderVibrationStrength(int answer);
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\neopixel.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\neopixel.ino"
 void NeopixelInit();
-#line 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\neopixel.ino"
+#line 16 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\neopixel.ino"
 void EncoderNeopixelOn();
-#line 25 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\neopixel.ino"
+#line 25 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\neopixel.ino"
 void NeoBlink(int neo, int neoColor, int cnt, int blinkTime);
-#line 35 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\neopixel.ino"
+#line 35 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\neopixel.ino"
 void AllNeoOn(int neoColor);
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\nextion.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\nextion.ino"
 void NextionInit();
-#line 7 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\nextion.ino"
+#line 7 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\nextion.ino"
 void DisplayCheck();
-#line 16 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\nextion.ino"
+#line 16 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\nextion.ino"
 void NextionReceived(String *nextion_string);
-#line 25 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\nextion.ino"
+#line 25 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\nextion.ino"
 void ExpSend();
-#line 42 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\nextion.ino"
+#line 42 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\nextion.ino"
 void BatteryPackSend();
-#line 4 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
+#line 4 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\rfid.ino"
 void RfidInit();
-#line 30 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
+#line 30 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\rfid.ino"
 void RfidLoopInner();
-#line 58 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
+#line 58 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\rfid.ino"
 void RfidLoopOutter();
-#line 87 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
+#line 87 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\rfid.ino"
 void CheckingPlayers(uint8_t rfidData[32]);
-#line 115 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
+#line 115 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\rfid.ino"
 void StartPuzzle();
-#line 131 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
+#line 131 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\rfid.ino"
 void PuzzleSolved();
-#line 153 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
+#line 153 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\rfid.ino"
 void ItemTook();
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\timer.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\timer.ino"
 void TimerInit();
-#line 10 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\timer.ino"
+#line 10 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\timer.ino"
 void WifiIntervalFunc();
-#line 14 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\timer.ino"
+#line 14 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\timer.ino"
 void GameTimerFunc();
-#line 30 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\timer.ino"
+#line 30 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\timer.ino"
 void BlinkTimerFunc();
-#line 42 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\timer.ino"
+#line 42 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\timer.ino"
 void BlinkTimerStart(int Neo, int NeoColor);
-#line 14 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\itembox_random_add.ino"
+#line 14 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\itembox_random_add.ino"
 void setup() 
 {
     Serial.begin(115200);
+    has2wifi.Setup("badland");
     NeopixelInit();
     RfidInit();
     MotorInit();
     EncoderInit();
     NextionInit();
     TimerInit();
-    has2wifi.Setup();
+    // has2wifi.Setup();
     // has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
     DataChanged();
 }
@@ -109,7 +110,7 @@ void loop()
     BlinkTimer.run();
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Game_system.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\Game_system.ino"
 /**
  * @brief 현재 풀고있는 문제에서 엔코더 값의 변화에 따라 네오픽셀 진동모터 정답카운팅을 관장하는 함수
  */
@@ -154,7 +155,7 @@ void Puzzle(void)
     }
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\Wifi.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\Wifi.ino"
 void DataChanged()
 {
   static StaticJsonDocument<500> cur;   //저장되어 있는 cur과 읽어온 my 값과 비교후 실행
@@ -208,6 +209,13 @@ void DataChanged()
         }
         else if((String)(const char*)my["device_state"] == "close"){ 
             BoxClose();
+        }
+        else if((String)(const char*)my["device_state"] == "repaired_all"){ 
+            ptrCurrentMode = WaitFunc;
+            ptrRfidMode = WaitFunc;
+            AllNeoOn(BLUE);
+            BoxOpen();
+            sendCommand("page pgEscapeOpen");
         }
         else if((String)(const char*)my["device_state"] == "player_win"){ 
             ptrCurrentMode = WaitFunc;
@@ -296,7 +304,7 @@ void ReadyFunc(void)
     GameTimer.deleteTimer(gameTimerId);
     ledcWrite(VibrationLedChannel, 0);
 }
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\encoder.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\encoder.ino"
 void EncoderInit()
 {
     Serial.println("ENCODER INIT");     //엔코더 핀 관련 초기화
@@ -327,7 +335,7 @@ long readEncoderValue(void)     //엔코더읽은 값 / 4 해주는 함수: 한�
     return encoderValue / 4;
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\motor.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\motor.ino"
 void MotorInit()
 {
     //Linear Motor Init
@@ -387,7 +395,7 @@ void EncoderVibrationStrength(int answer)
     ledcWrite(VibrationLedChannel, modeValue[VIBESTREGNTH][vibeStrength]);
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\neopixel.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\neopixel.ino"
 void NeopixelInit() // 전체 네오픽셀 초기화 해주는 함수                    
 {
   for (int i = 0; i < NeopixelNum; ++i)
@@ -427,7 +435,7 @@ void AllNeoOn(int neoColor){
     pixels[i].lightColor(color[neoColor]);
 }
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\nextion.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\nextion.ino"
 void NextionInit()
 {
    nexInit();
@@ -498,7 +506,7 @@ void BatteryPackSend(){
 }
 
 
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\rfid.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\rfid.ino"
 /**
  * @brief 내부 외부 pn532 초기활성화 및 실패시  goto문 반복
  */
@@ -680,7 +688,7 @@ void ItemTook()
     BlinkTimerStart(INNER, YELLOW);                     // 내부 네오픽셀 황색 점멸 타이머 시작
   }
 }
-#line 1 "c:\\Users\\HAS1\\Desktop\\BBangJun\\HAS2_Final_Code\\itembox_random_add\\timer.ino"
+#line 1 "c:\\Users\\teamh\\OneDrive\\바탕 화면\\BBangJunCode\\Final_Code\\itembox_random_add\\timer.ino"
 void TimerInit()
 {
     wifiTimerId = WifiTimer.setInterval(wifiTime,WifiIntervalFunc);

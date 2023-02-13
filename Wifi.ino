@@ -52,6 +52,13 @@ void DataChanged()
         else if((String)(const char*)my["device_state"] == "close"){ 
             BoxClose();
         }
+        else if((String)(const char*)my["device_state"] == "repaired_all"){ 
+            ptrCurrentMode = WaitFunc;
+            ptrRfidMode = WaitFunc;
+            AllNeoOn(BLUE);
+            BoxOpen();
+            sendCommand("page pgEscapeOpen");
+        }
         else if((String)(const char*)my["device_state"] == "player_win"){ 
             ptrCurrentMode = WaitFunc;
             ptrRfidMode = WaitFunc;
