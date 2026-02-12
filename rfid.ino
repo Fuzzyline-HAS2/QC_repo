@@ -1,27 +1,38 @@
 /**
- * @brief 내부 외부 pn532 초기활성화 및 실패시  goto문 반복
+ * @brief 내부 외부 pn532 초기활성화 및 실패시 재시도 (최대 10회)
  */
 void RfidInit()
 {
-RestartPn532:                                             // goto문 회귀 위치
-  for (int i = 0; i < rfid_num; ++i)
+  const int MAX_RETRY = 10;
+  int retryCount = 0;
+  bool allConnected = false;
+
+  while (!allConnected && retryCount < MAX_RETRY)
   {
-    nfc[i].begin();
-    if (!(nfc[i].getFirmwareVersion()))                   // pn532 동작 안할때
-    { 
-      Serial.println("PN532 연결실패 : " + String(i));
-      AllNeoOn(RED);
-      Serial.println("pn532 INIT 재실행");
-      goto RestartPn532;                                  // pn532오류시 goto문 동작하여 RFIDinit함수 재실행
-    }
-    else
+    allConnected = true;
+    for (int i = 0; i < rfid_num; ++i)
     {
-      nfc[i].SAMConfig();
-      Serial.println("PN532 연결성공 : " + String(i));
-      rfid_init_complete[i] = true;
-      AllNeoOn(YELLOW);
+      nfc[i].begin();
+      if (!(nfc[i].getFirmwareVersion()))                 // pn532 동작 안할때
+      {
+        Serial.println("PN532 연결실패 : " + String(i) + " (재시도 " + String(retryCount + 1) + "/" + String(MAX_RETRY) + ")");
+        AllNeoOn(RED);
+        allConnected = false;
+        rfid_init_complete[i] = false;
+      }
+      else
+      {
+        nfc[i].SAMConfig();
+        Serial.println("PN532 연결성공 : " + String(i));
+        rfid_init_complete[i] = true;
+        AllNeoOn(YELLOW);
+      }
+      yield();                                            // Watchdog 피드 (블로킹 없음)
     }
-    delay(100);
+    if (!allConnected) retryCount++;
+  }
+  if (!allConnected) {
+    Serial.println("⚠️ PN532 초기화 실패 - 최대 재시도 초과");
   }
 }
 /**

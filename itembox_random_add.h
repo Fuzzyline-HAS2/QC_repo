@@ -17,8 +17,9 @@ void WaitFunc(void);
 void WifiIntervalLoop(unsigned long intervalValue);
 unsigned long wifiInterval = 0;
 //****************************************Game System****************************************************************
-void (*ptrCurrentMode)();   //현재모드 저장용 포인터 함수
-void (*ptrRfidMode)();      //rfid모드 저장용 포인터 함수
+void WaitFunc(void);                    // forward declaration
+void (*ptrCurrentMode)() = WaitFunc;    //현재모드 저장용 포인터 함수 (기본: WaitFunc)
+void (*ptrRfidMode)() = WaitFunc;       //rfid모드 저장용 포인터 함수 (기본: WaitFunc)
 //****************************************Game System****************************************************************
 unsigned long puzzleStartTime = 0; 
 enum {VIBESTREGNTH = 0, ANSWER, RANGE};

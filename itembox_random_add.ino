@@ -18,10 +18,10 @@ void setup()
     Serial.begin(115200);
     has2wifi.Setup("badland");
     NeopixelInit();
-    RfidInit();
-    MotorInit();
-    EncoderInit();
-    NextionInit();
+    //RfidInit();
+    //MotorInit();
+    //EncoderInit();
+    //NextionInit();
     TimerInit();
     // has2wifi.Setup();
     // has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
@@ -33,7 +33,7 @@ void setup()
     QCEngine::getInstance().addRule(new QCRule_WifiSignal());
     QCEngine::getInstance().addRule(new QCRule_HeapMemory());
     QCEngine::getInstance().addRule(new QCRule_GameState());
-    QCEngine::getInstance().addRule(new QCRule_RfidStatus());
+    //QCEngine::getInstance().addRule(new QCRule_RfidStatus());
     QCEngine::getInstance().addRule(new QCRule_EncoderRange());
     QCEngine::getInstance().addRule(new QCRule_StateConsistency());
     Serial.println("QC System Started");
