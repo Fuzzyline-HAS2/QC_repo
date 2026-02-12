@@ -10,6 +10,8 @@
  */
 
 #include "itembox_random_add.h"
+#include "QC/QC_Engine.h"
+#include "QC/QC_Rules.h"
 
 void setup() 
 {
@@ -24,6 +26,16 @@ void setup()
     // has2wifi.Setup();
     // has2wifi.Setup("KT_GiGA_6C64","ed46zx1198");
     DataChanged();
+
+    // QC System Initialization
+    QCEngine::getInstance().begin(1000);
+    QCEngine::getInstance().addRule(new QCRule_WifiConnection());
+    QCEngine::getInstance().addRule(new QCRule_WifiSignal());
+    QCEngine::getInstance().addRule(new QCRule_HeapMemory());
+    QCEngine::getInstance().addRule(new QCRule_GameState());
+    QCEngine::getInstance().addRule(new QCRule_RfidStatus());
+    QCEngine::getInstance().addRule(new QCRule_EncoderRange());
+    Serial.println("QC System Started");
 }
 void loop() 
 {
@@ -31,4 +43,7 @@ void loop()
     WifiTimer.run();
     GameTimer.run();
     BlinkTimer.run();
+
+    // QC Check
+    QCEngine::getInstance().tick();
 }
