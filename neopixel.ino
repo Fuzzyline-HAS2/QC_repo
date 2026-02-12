@@ -1,3 +1,10 @@
+// lightColor: 전체 네오픽셀을 하나의 색으로 켜는 헬퍼 함수
+void lightColor(Adafruit_NeoPixel &strip, int colorArr[3]) {
+  for (int j = 0; j < strip.numPixels(); j++)
+    strip.setPixelColor(j, strip.Color(colorArr[0], colorArr[1], colorArr[2]));
+  strip.show();
+}
+
 void NeopixelInit() // 전체 네오픽셀 초기화 해주는 함수                    
 {
   for (int i = 0; i < NeopixelNum; ++i)
@@ -6,7 +13,7 @@ void NeopixelInit() // 전체 네오픽셀 초기화 해주는 함수
   }
   for (int i = 0; i < NeopixelNum; ++i)
   {
-    pixels[i].lightColor(color[WHITE]);
+    lightColor(pixels[i], color[WHITE]);
   }
 }
 
@@ -25,14 +32,14 @@ void EncoderNeopixelOn()
 void NeoBlink(int neo, int neoColor, int cnt, int blinkTime)
 {
   for(int i = 0; i < cnt; i++){                          //0.5*10=5초동안 점멸
-    pixels[neo].lightColor(color[BLACK]); //전체 off
+    lightColor(pixels[neo], color[BLACK]); //전체 off
     delay(blinkTime);            
-    pixels[neo].lightColor(color[neoColor]); //전체 적색on
+    lightColor(pixels[neo], color[neoColor]); //전체 적색on
     delay(blinkTime);                   //전체 적색on
   }
 }
 
 void AllNeoOn(int neoColor){
   for (int i = 0; i < NeopixelNum; ++i)
-    pixels[i].lightColor(color[neoColor]);
+    lightColor(pixels[i], color[neoColor]);
 }

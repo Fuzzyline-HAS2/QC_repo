@@ -42,7 +42,7 @@ void DataChanged()
                 ExpSend();
                 BatteryPackSend();
                 BoxOpen();
-                pixels[INNER].lightColor(color[YELLOW]);
+                lightColor(pixels[INNER], color[YELLOW]);
                 ptrCurrentMode = RfidLoopInner;
                 ptrRfidMode = ItemTook;
                 BlinkTimer.deleteTimer(blinkTimerId);
@@ -102,7 +102,7 @@ void SettingFunc(void)
     itemBoxUsed = false;        //박스 사용했는지 확인하는 변수 초기화
     BlinkTimer.deleteTimer(blinkTimerId);
     GameTimer.deleteTimer(gameTimerId);
-    ledcWrite(VibrationLedChannel, 0);
+    ledcWrite(VIBRATION_RANGE_PIN, 0);
 }
 void ActivateFunc(void)
 {
@@ -119,7 +119,7 @@ void ActivateFunc(void)
     itemBoxUsed = false;        //박스 사용했는지 확인하는 변수 초기화
     BlinkTimer.deleteTimer(blinkTimerId);
     GameTimer.deleteTimer(gameTimerId);
-    ledcWrite(VibrationLedChannel, 0);
+    ledcWrite(VIBRATION_RANGE_PIN, 0);
 }
 void ReadyFunc(void)
 {
@@ -153,5 +153,5 @@ void ReadyFunc(void)
     itemBoxUsed = false;        //박스 사용했는지 확인하는 변수 초기화
     BlinkTimer.deleteTimer(blinkTimerId);
     GameTimer.deleteTimer(gameTimerId);
-    ledcWrite(VibrationLedChannel, 0);
+    ledcWrite(VIBRATION_RANGE_PIN, 0);
 }

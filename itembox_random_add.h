@@ -77,6 +77,7 @@ void ExpSend();
 void BatteryPackSend();
 //****************************************Neopixel SETUP****************************************************************
 void NeopixelInit();
+void lightColor(Adafruit_NeoPixel &strip, int colorArr[3]);
 void EncoderNeopixelOn();
 void NeoBlink(int neo, int neoColor, int cnt, int blinkTime);
 const int NumPixels[3] = {28,24,24};
