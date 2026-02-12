@@ -114,6 +114,7 @@ void CheckingPlayers(uint8_t rfidData[32])                // 어떤 카드가 �
  */
 void StartPuzzle()
 {
+  transitionTo(ItemBoxState::PUZZLE);
   Serial.println("StartPuzzle");
   WifiTimer.deleteTimer(wifiTimerId);                           // 엔코더 렉을 없애기 위해 wifi read 엔코더 사용동안에 중단
   GameTimer.deleteTimer(gameTimerId);
@@ -130,6 +131,7 @@ void StartPuzzle()
  */
 void PuzzleSolved()
 {
+  transitionTo(ItemBoxState::OPEN);
   itemBoxSelfOpen = true;                                                         // 태그하면 아이템박스가 open 상태 임으로 메인에서 open 명령 들어와도 재실행되지 않게 제한하는 bool 변수
   has2wifi.Send((String)(const char *)my["device_name"], "device_state", "open"); // 메인으로 현재부터 아박의 상태가 open으로 저장
   Serial.println("PuzzleSolved");
@@ -157,7 +159,8 @@ void ItemTook()
   Serial.println(((int)tag["battery_pack"] + (int)my["battery_pack"]));
   Serial.println((int)my["max_battery_pack"]);
   /* #endregion */
-  if (((int)tag["battery_pack"] + (int)my["battery_pack"]) <= (int)tag["max_battery_pack"]){                                    // 태그한 플레이어의 현재 배터리팩 최대 소지 가능 개수가 >= 아이템박스에서 얻을 수 있는거 보다 많거나 같을때
+  if (((int)tag["battery_pack"] + (int)my["battery_pack"]) <= (int)tag["max_battery_pack"]){
+    transitionTo(ItemBoxState::USED);                                    // 태그한 플레이어의 현재 배터리팩 최대 소지 가능 개수가 >= 아이템박스에서 얻을 수 있는거 보다 많거나 같을때
     sendCommand("page pgItemTaken");                                                                                            // Nextion에서 배터리팩 가져간 후 페이지로 변경 + 효과음은 페이지 pgItemTakenb 변경시 nextion에서 자동재생
     AllNeoOn(RED);                                                                                                              // 가져가고 나서 USED일땐 전체 빨간색
     has2wifi.Send((String)(const char *)my["device_name"], "device_state", "used");                                             // 아박 device_state = used 처리

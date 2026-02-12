@@ -31,6 +31,7 @@ void Puzzle(void)
                 nGameTimerCnt = 0;                                                  // 게임 타이머 초기화
                 ptrCurrentMode = RfidLoopOutter;                                    // ptr 메인 함수 Puzzle -> RFIDOutter로 변경: 태그하여 노브 끝내기 위해
                 ptrRfidMode = PuzzleSolved;                                         // ChekingPlayer 실행시 실행되는 ptr함수 주소가 WaitFunc -> puzzleSolved로 변경: 아박 열기위해
+                transitionTo(ItemBoxState::QUIZ_COMPLETE);
             }
         }
         else                                    // 틀렸을때

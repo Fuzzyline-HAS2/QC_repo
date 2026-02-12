@@ -20,6 +20,7 @@ void DataChanged()
         }
         else if((String)(const char*)my["device_state"] == "used"){
             if(itemBoxUsed == false){
+                transitionTo(ItemBoxState::USED);
                 BoxOpen();
                 AllNeoOn(RED);
                 sendCommand("page pgItemTaken");
@@ -32,6 +33,7 @@ void DataChanged()
         }
         else if((String)(const char*)my["device_state"] == "open"){ //노브 puzzle 끝난상태
             if(itemBoxSelfOpen == false){                           //플레이어가 스스로 열었으면 true 여서 이미 열었다는 의미
+                transitionTo(ItemBoxState::OPEN);
                 Serial.println("PuzzleSolved");
                 AllNeoOn(BLUE);
                 sendCommand("page pgItemOpen");
@@ -50,9 +52,11 @@ void DataChanged()
             }
         }
         else if((String)(const char*)my["device_state"] == "close"){ 
+            transitionTo(ItemBoxState::CLOSE);
             BoxClose();
         }
         else if((String)(const char*)my["device_state"] == "repaired_all"){ 
+            transitionTo(ItemBoxState::REPAIRED_ALL);
             ptrCurrentMode = WaitFunc;
             ptrRfidMode = WaitFunc;
             AllNeoOn(BLUE);
@@ -60,6 +64,7 @@ void DataChanged()
             sendCommand("page pgEscapeOpen");
         }
         else if((String)(const char*)my["device_state"] == "player_win"){ 
+            transitionTo(ItemBoxState::PLAYER_WIN);
             ptrCurrentMode = WaitFunc;
             ptrRfidMode = WaitFunc;
             AllNeoOn(BLUE);
@@ -67,6 +72,7 @@ void DataChanged()
             sendCommand("page pgPlayerWin");
         }
         else if((String)(const char*)my["device_state"] == "player_lose"){ 
+            transitionTo(ItemBoxState::PLAYER_LOSE);
             ptrCurrentMode = WaitFunc;
             ptrRfidMode = WaitFunc;
             AllNeoOn(RED);
@@ -83,6 +89,7 @@ void WaitFunc(void)
 }
 void SettingFunc(void)
 {
+    transitionTo(ItemBoxState::SETTING);
     sendCommand("page pgWait");
     Serial.println("SETTING");
     AllNeoOn(WHITE);
@@ -99,6 +106,7 @@ void SettingFunc(void)
 }
 void ActivateFunc(void)
 {
+    transitionTo(ItemBoxState::ACTIVATE);
     sendCommand("page pgWait");
     encoderValue = 165;
     answerCnt = 0;
@@ -115,6 +123,7 @@ void ActivateFunc(void)
 }
 void ReadyFunc(void)
 {
+    transitionTo(ItemBoxState::READY);
     int nCycleCnt = 0;
     for(int i = HI1; i <= FI2; i++){
         batteryPackRnd[i].nVal = 0;

@@ -35,6 +35,7 @@ void setup()
     QCEngine::getInstance().addRule(new QCRule_GameState());
     QCEngine::getInstance().addRule(new QCRule_RfidStatus());
     QCEngine::getInstance().addRule(new QCRule_EncoderRange());
+    QCEngine::getInstance().addRule(new QCRule_StateConsistency());
     Serial.println("QC System Started");
 }
 void loop() 

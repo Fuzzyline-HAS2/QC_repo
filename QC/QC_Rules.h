@@ -5,6 +5,7 @@
 #include <HAS2_Wifi.h>
 #include <WiFi.h>
 #include <cstdint>
+#include "../ItemBoxState.h"
 
 // 'my' is declared in HAS2_Wifi.h (included above)
 
@@ -177,6 +178,50 @@ public:
       return QCResult(QCLevel::WARN, getId(), "Encoder Value",
                       "0~380", String(val),
                       "Encoder value out of range, check hardware");
+    }
+    return QCResult();
+  }
+};
+
+// ---------------------------------------------------------
+// Rule: FSM vs Server State Consistency
+// ---------------------------------------------------------
+class QCRule_StateConsistency : public IQCRule {
+public:
+  String getId() const override { return "LOGIC_FSM_01"; }
+  String getName() const override { return "FSM State Consistency"; }
+  bool isFastCheck() const override { return false; }
+
+  QCResult check() override {
+    extern ItemBoxState currentState;
+    if (my.size() == 0) return QCResult();
+
+    if (my.containsKey("device_state")) {
+      String dState = (const char *)my["device_state"];
+      bool mismatch = false;
+      String detail = "";
+
+      if (dState == "open" && currentState != ItemBoxState::OPEN
+          && currentState != ItemBoxState::USED
+          && currentState != ItemBoxState::QUIZ_COMPLETE) {
+        mismatch = true;
+      }
+      else if (dState == "used" && currentState != ItemBoxState::USED) {
+        mismatch = true;
+      }
+      else if (dState == "activate" && currentState != ItemBoxState::ACTIVATE
+               && currentState != ItemBoxState::PUZZLE
+               && currentState != ItemBoxState::QUIZ_COMPLETE
+               && currentState != ItemBoxState::OPEN) {
+        mismatch = true;
+      }
+
+      if (mismatch) {
+        detail = "Server:" + dState + " FSM:" + String(getStateName(currentState));
+        return QCResult(QCLevel::WARN, getId(), "FSM vs Server",
+                        "Consistent", detail,
+                        "State mismatch between server and device");
+      }
     }
     return QCResult();
   }

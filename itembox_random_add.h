@@ -2,7 +2,9 @@
 #define _DONE_ITEMBOX_CODE_
 
 #include "Library_and_pin.h"
+#include "ItemBoxState.h"
 const int rfid_num = 2; // 설치된 pn532의 개수
+ItemBoxState currentState = ItemBoxState::BOOT;  // FSM 현재 상태
 
 //****************************************WIFI****************************************************************
 HAS2_Wifi has2wifi;
